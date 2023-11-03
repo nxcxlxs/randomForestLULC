@@ -41,7 +41,12 @@ names(img) <- c("b1", "b2", "b3", "b4", "b5", "b6", "b7")
 names(img)
 
 #extração de valores de reflectância. Leva um tempo!
+start.time <- Sys.time()
 smp <- raster::extract(img, shp, df = TRUE)
+end.time <- Sys.time()
+time.taken <- round(end.time - start.time,2)
+
+time.taken #tempo necessário para extração.
 
 #combinar coluna 'ID' da extração com a coluna 'class' dos vetores.
 smp$cl <- as.factor(shp$class[match(smp$ID, seq(nrow(shp)))])
