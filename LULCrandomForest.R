@@ -40,13 +40,13 @@ names(img)
 names(img) <- c("b1", "b2", "b3", "b4", "b5", "b6", "b7")
 names(img)
 
-#extração de valores de reflectância. Leva um tempo!
-start.time <- Sys.time()
+#extração de valores de reflectância.
+start.timeXtr <- Sys.time()
 smp <- raster::extract(img, shp, df = TRUE)
-end.time <- Sys.time()
-time.taken <- round(end.time - start.time,2)
+end.timeXtr <- Sys.time()
+time.takenXtr <- round(end.time - start.time,2)
 
-time.taken #tempo necessário para extração.
+time.takenXtr #tempo necessário para extração.
 
 #combinar coluna 'ID' da extração com a coluna 'class' dos vetores.
 smp$cl <- as.factor(shp$class[match(smp$ID, seq(nrow(shp)))])
@@ -118,11 +118,16 @@ save(rfmodel, file = "rfmodel.RData")
 load("rfmodel.RData")
 
 #rodar classificação.
+start.timeClass <- Sys.time()
 result <- raster::predict(img,
                           rfmodel,
                           filename = "RF_classification.tif",
                           overwrite = TRUE,
                           progress = "text")
+end.timeClass <- Sys.time()
+time.takenClass <- round(end.timeClass - start.timeClass, 2)
+
+time.takenClass #tempo necessário para classificação.
 
 #plotar classificação.
 plot(result, 
