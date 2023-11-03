@@ -78,8 +78,6 @@ legend(as.character(sp$cl),
        col = mycolors,
        lwd = 5,
        bty = "n")
-
-       
        
 #avaliação da distribuição das amostras nas classes.
 summary(smp$cl)
