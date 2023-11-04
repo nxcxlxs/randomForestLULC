@@ -35,7 +35,7 @@ levels(as.factor(shp$class))
 for (i in 1:length(unique(shp$class)))
   {cat(paste0(i, " ", levels(as.factor(shp$class))[i]), sep="\n")}
 
-#renomear as bandas. melhora a visualização.
+#renomear as bandas. melhora a visualização de mean decrease Accuracy e Gini.
 names(img)
 names(img) <- c("b1", "b2", "b3", "b4", "b5", "b6", "b7")
 names(img)
