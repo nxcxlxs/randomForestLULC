@@ -98,8 +98,8 @@ rfmodel <- tuneRF(x = smp[-ncol(smp)],
                   strata = smp$cl,
                   ntree = 250,
                   importance = TRUE,
-                  doBest = TRUE,                  #whether to run a forest using the optimal mtry found
-                  plot = TRUE                     #whether to plot the OOB error as function of mtry
+                  doBest = TRUE,                  #whether to run a forest using the optimal mtry found.
+                  plot = TRUE                     #whether to plot the OOB error as function of mtry.
 )
 
 #info do modelo.
