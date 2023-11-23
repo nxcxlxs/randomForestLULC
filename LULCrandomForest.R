@@ -4,7 +4,7 @@ library(sf)
 library(randomForest)
 
 #local onde foram baixados os arquivos disponibilizados na pasta 'data'.
-pathToFiles <- "C:/Users/"
+pathToFiles <- "C:/Users/Nicolas/VC"
 
 #processar bandas.
 products <- list.files(pathToFiles, full.names = TRUE)
@@ -21,6 +21,7 @@ img <- stack(bands) #fundir as bandas.
 
 shp <- read_sf("training_dataREPROJ.shp") #carregar os vetores de amostragem.
 
+print(shp[421:430,2])
 shp <- shp[c(-425),] #um polígono ficou vazio.
 
 compareCRS(img,shp) #mesmo SRC em ambos.
