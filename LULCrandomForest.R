@@ -97,7 +97,7 @@ rfmodel <- tuneRF(x = smp[-ncol(smp)],
                   y = smp$cl,
                   sampsize = smp.size,
                   strata = smp$cl,
-                  ntree = 250,
+                  ntreeTry = 250,
                   importance = TRUE,
                   doBest = TRUE,                  #whether to run a forest using the optimal mtry found.
                   plot = TRUE                     #whether to plot the OOB error as function of mtry.
@@ -110,8 +110,17 @@ rfmodel
 varImpPlot(rfmodel)
 
 #plot do modelo.
+#plot do modelo.
+par(mar = c(5, 5, 5, 15),
+    xpd = TRUE)
 plot(rfmodel, col = c("#000000", "#E974ED", "#af2a2a", "#0000FF",
                       "#006400", "#FFEFC3", "#FFD966", "#935132"), lwd = 3)
+legend(as.character(sp$cl),
+       x = "topright",
+       inset = c(-1,0),
+       col = mycolors,
+       lwd = 5,
+       bty = "n")
 
 #salvar modelo.
 save(rfmodel, file = "rfmodel.RData")
