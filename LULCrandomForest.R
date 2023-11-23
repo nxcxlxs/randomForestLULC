@@ -4,7 +4,7 @@ library(sf)
 library(randomForest)
 
 #local onde foram baixados os arquivos disponibilizados na pasta 'data'.
-pathToFiles <- "C:/Users/"
+pathToFiles <- "C:/Users/Nicolas/VC"
 
 #processar bandas.
 products <- list.files(pathToFiles, full.names = TRUE)
@@ -44,7 +44,7 @@ names(img)
 start.timeXtr <- Sys.time()
 smp <- raster::extract(img, shp, df = TRUE)
 end.timeXtr <- Sys.time()
-time.takenXtr <- round(end.time - start.time,2)
+time.takenXtr <- round(end.timeXtr - start.timeXtr,2)
 
 time.takenXtr #tempo necessário para extração.
 
